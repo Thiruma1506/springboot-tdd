@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    tools{
+        maven 'maven3'
+    }
+    stages{
+        stage('Build Maven'){
+            steps{
+               checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/9182029380/springboot-tdd']])
+                bat 'mvn clean install'
+            }
+        }
+        stage('Build and Push Docker Image'){
+            steps{
+                script{
+
+                    bat 'docker build -t sharath198/devops-integration .'
+                    bat 'docker push sharath198/devops-integration'
+                }
+            }
+        }
+         stage('Deploy to k8s'){
+            steps{
+                script{
+                    kubernetesDeploy (configs: 'deploymentservice.yml',kubeconfigId: 'k8sconfigpwd')
+                }
+            }
+        }
+
+    }
+}
