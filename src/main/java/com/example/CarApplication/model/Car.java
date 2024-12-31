@@ -17,9 +17,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "car")
 public class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String brand;
     private String modelname;
-    private boolean available;
+    private String modelyear;
 }

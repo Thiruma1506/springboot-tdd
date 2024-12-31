@@ -13,7 +13,11 @@ public class CarService {
     private CarRepository carRepository;
 
 
-    public List<Car> findAvailableCars() {
-        return carRepository.findByAvailable(true);
+    public List<Car> findCarsByModelyear(String modelyear) {
+        return carRepository.findByModelyear(modelyear);
+    }
+
+    public List<Car> addCars(List<Car> cars) {
+        return carRepository.saveAll(cars);
     }
 }
