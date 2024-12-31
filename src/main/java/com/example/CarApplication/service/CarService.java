@@ -20,4 +20,8 @@ public class CarService {
     public List<Car> addCars(List<Car> cars) {
         return carRepository.saveAll(cars);
     }
+
+    public List<Car> findCarsByBrand(String brand) {
+        return carRepository.findByBrand(brand);
+    }
 }

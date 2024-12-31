@@ -33,6 +33,14 @@ public class Carcontroller {
         }
     }
 
+    @GetMapping("/cars/by-brand")
+        public ResponseEntity<List<Car>> getCarsByBrand(@RequestParam String brand) {
+            List<Car> cars = carService.findCarsByBrand(brand);
+            return ResponseEntity.ok(cars);
+        }
+
     }
+
+
 
 
