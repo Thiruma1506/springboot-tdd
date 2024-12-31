@@ -14,8 +14,8 @@ pipeline {
             steps{
                 script{
 
-                    bat 'docker build -t sharath198/devops-integration .'
-                    bat 'docker push sharath198/devops-integration'
+                    bat 'docker build -t thirumavalavan1506/devops-integration .'
+                    bat 'docker push thirumavalavan1506/devops-integration'
                 }
             }
         }
